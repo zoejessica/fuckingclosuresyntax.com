@@ -109,38 +109,23 @@
   <h1>How Do I Declare A Closure in Swift?</h1>
 
   <div>
-    <h2>As a <strong>local variable</strong>:</h2>
+    <h2>As a <strong>var</strong>:</h2>
     <code>
-      <span class='return'>returnType</span> (^<span class='name'>blockName</span>)(<span class='parameter-types'>parameterTypes</span>) = ^<span class='return'>returnType</span>(<span class='parameters'>parameters</span>) {...};
+      var <span class='name'>closureName</span>: (<span class='parameter-types'>parameterTypes</span>) -> (<span class='return'>returnType</span>)
     </code>
   </div>
 
   <div>
-    <h2>As a <strong>property</strong>:</h2>
+    <h2>As a <strong>function parameter</strong>:</h2>
     <code>
-      @property (nonatomic, copy) <span class='return'>returnType</span> (^<span class='name'>blockName</span>)(<span class='parameter-types'>parameterTypes</span>);
+      func name(<span class='name'>closureName</span>: (<span class='parameter-types'>parameterTypes</span>) -> (<span class='return'>returnType</span>))
     </code>
   </div>
 
   <div>
-    <h2>As a <strong>method parameter</strong>:</h2>
+    <h2>As an <strong>argument to a function call</strong>:</h2>
     <code>
-      - (void)someMethodThatTakesABlock:(<span class='return'>returnType</span> (^)(<span class='parameter-types'>parameterTypes</span>))<span class='name'>blockName</span>;
-    </code>
-  </div>
-
-  <div>
-    <h2>As an <strong>argument to a method call</strong>:</h2>
-    <code>
-      [someObject someMethodThatTakesABlock: ^<span class='return'>returnType</span> (<span class='parameters'>parameters</span>) {...}];
-    </code>
-  </div>
-
-  <div>
-    <h2>As a <strong>typedef</strong>:</h2>
-    <code>
-      typedef <span class='return'>returnType</span> (^<span class='name'>TypeName</span>)(<span class='parameter-types'>parameterTypes</span>);<br/>
-      <span class='name'>TypeName</span> blockName = ^<span class='return'>returnType</span>(<span class='parameters'>parameters</span>) {...};
+      func({(<span class='parameter-types'>parameterTypes</span>) -> (<span class='return'>returnType</span>) in statements})
     </code>
   </div>
 
