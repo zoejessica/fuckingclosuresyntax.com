@@ -47,6 +47,11 @@
 
     .disclaimer {
       line-height: 2em;
+      padding-bottom: 2em;
+    }
+
+    div p.disclaimer {
+        padding-left: 2em;
     }
 
     code {
@@ -56,6 +61,11 @@
       margin-bottom: 3em;
       margin-left: 40px;
       margin-top: 1.5em;
+    }
+
+    .inline-code {
+        font-family: Menlo, monaco, monospace;
+        color: #ba246c;
     }
 
     footer {
@@ -155,10 +165,11 @@
   </div>
 
   <div>
-    <h2>As a <strong>function that takes a function as a parameter</strong>:</h2>
+    <h2>As a <strong>parameter to another function</strong>:</h2>
     <code>
       <span class='name'>funcName</span>(parameter: (<span class='parameter-types'>ParameterTypes</span>) -&gt; <span class='return'>ReturnType</span>)
     </code>
+    <p class='disclaimer'>Note: if the passed-in closure is going to outlive the scope of the method, e.g. if you are saving it to a property, it needs to be annotated with <span class='inline-code'>@escaping</span>.</p>
   </div>
   
   <div>
