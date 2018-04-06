@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>How Do I Declare a Closure in Swift?</title>
+    <title>How do I use if case let syntax in Swift?</title>
     <style>
     body {
       background-color: #292a35;
@@ -13,7 +13,7 @@
     }
 
     strong {
-      color: #56bd4d;
+      color: #ba246c;
     }
 
     h1 {
@@ -26,11 +26,11 @@
       font-weight: normal;
     }
 
-    .return {
+    .let {
       color: #ba246c;
     }
 
-    .name {
+    .green {
       color: #95cc6b;
     }
 
@@ -38,12 +38,16 @@
       color: #2dafc9;
     }
 
-    .parameter-types, .parameters {
+    .parameter-types, .parameters, .expression {
       color: #2dafc9;
     }
 
-    .closure-type {
+    .closure-type, .pattern {
       color: #95cc6b;
+    }
+    
+    .comment {
+	  color: #959292;
     }
 
     .disclaimer {
@@ -120,62 +124,73 @@
     <link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
     <meta content="Closures" name="apple-mobile-web-app-title">
     <base target="_top">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-9504319-6"></script>
     <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    ga('create', 'UA-51593041-1', 'fuckingclosuresyntax.com');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-
+      gtag('config', 'UA-9504319-6');
     </script>
 </head>
 <body>
     <style>
     #forkongithub a{background:#AA3333;color:#fff;text-decoration:none;font-family:Helvetica Neue,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#c11;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.3);}}
-    </style><span id="forkongithub"><a href="https://github.com/ZevEisenberg/fuckingclosuresyntax.com">Fork me on GitHub</a></span><br>
+    </style><span id="forkongithub"><a href="https://github.com/zoejessica/fuckingifcaseletsyntax.com">Fork me on GitHub</a></span><br>
     <br>
-    <h1>How Do I Declare a Closure in Swift?</h1>
+    <h1>How Do I Use if case let Syntax in Swift?</h1>
     <div>
-        <h2>As a <strong>variable</strong>:</h2><code><span class='return'>var</span> closureName: (<span class='parameter-types'>ParameterTypes</span>) -&gt; <span class='return'>ReturnType</span></code>
+        <h2><strong>if case let</strong> is just an abbreviated form of <strong>switch</strong>:</h2>
+        <p class='disclaimer'>The <span class='pattern'>pattern to match</span> against goes in exactly the same place, after the <span class='inline-code'>case let</span> keywords. But the order looks reversed, as the <span class='expression'>expression</span> has moved right, after the <span class='inline-code'>=</span> operator.</p>
+        <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span> = <span class='expression'>fido</span> {<br/>
+        <span class='comment'>...  // tell fido he's a good boy ... </span><br/>
+        </code><p class='disclaimer'>is equal to</p><code>
+        switch <span class='expression'>fido</span> {<br/>
+
+        case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span>:<br/>
+        <span class='comment'>... // tell fido he's a good boy ...</span><br/>
+        </code>
+    </div>
+        <div>
+        <h2><strong>let</strong> binds associated values</h2>
+        <p class='disclaimer'>Putting <span class='inline-code'>let</span> after case means you can omit it for all subsequent associated value bindings. Or you can write it before each value:</p>
+        <code>if case <span class='pattern'>Puppy.mastiff(<span class='let'>let</span> droolRating, <span class='let'>let</span> weight)</span> = <span class='expression'>fido</span> {<br/>
+        <span class='comment'>...  // does that pup need an extra treat? ... </span>
+        </code>
+        <p class='disclaimer'>Bind a tuple with all the values at once:</p>
+         <code>if case let <span class='pattern'>Puppy.mastiff(characteristics)</span> = <span class='expression'>fido</span> {<br/>
+        <span class='comment'>...  // let's check this one out ... </span><br/>
+        </code>
+        <p class='disclaimer'>Omit <span class='let'>let</span> entirely if you don't need the associated values:</p>
+         <code>if case <span class='pattern'>Puppy.mastiff</span> = <span class='expression'>fido</span> {<br/>
+        <span class='comment'>...  // just hand me the pupster ... </span><br/>
+        </code>
     </div>
     <div>
-        <h2>As an <strong>optional variable</strong>:</h2><code><span class='return'>var</span> closureName: ((<span class='parameter-types'>ParameterTypes</span>) -&gt; <span class='return'>ReturnType</span>)?</code>
+        <h2>Add <strong>where</strong> clauses using commas</h2>       
+        <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating > 4 {<br/>
+        <span class='comment'>...  // you're going to need a new couch ... </span><br/>
+        </code>
     </div>
     <div>
-        <h2>As a <strong>type alias</strong>:</h2><code><span class='return'>typealias</span> <span class='closure-type'>ClosureType</span> = (<span class='parameter-types'>ParameterTypes</span>) -&gt; <span class='return'>ReturnType</span></code>
+        <h2>Add <strong>where</strong> clauses in <strong>guard</strong> statements</h2>       
+        <code>guard case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating > 10 {<br/>
+        <span class='comment'>...  // that dog is not coming in the house ... </span><br/>
+        </code>
     </div>
     <div>
-        <h2>As a <strong>constant</strong>:</h2><code><span class='return'>let</span> closureName: <span class='closure-type'>ClosureType</span> = { ... }</code>
-    </div>
-    <div>
-        <h2>As a <strong>parameter to another function</strong>:</h2><code><span class='name'>funcName</span>(parameter: (<span class='parameter-types'>ParameterTypes</span>) -&gt; <span class='return'>ReturnType</span>)</code>
-        <p class='disclaimer'>Note: if the passed-in closure is going to outlive the scope of the method, e.g. if you are saving it to a property, it needs to be annotated with <span class='inline-code'>@escaping</span>.</p>
-    </div>
-    <div>
-        <h2>As an <strong>argument to a function call</strong>:</h2><code><span class='name'>funcName</span>({ (<span class='parameter-types'>ParameterTypes</span>) -&gt; <span class='return'>ReturnType</span> in statements })</code>
-    </div>
-    <div>
-        <h2>As a <strong>function parameter</strong>:</h2><code><span class='name'>array</span>.<span class='func'>sorted</span>(<span class='func'>by:</span> { (item1: <span class='func'>Int</span>, item2: <span class='func'>Int</span>) -&gt; Bool <span class='return'>in return</span> item1 &lt; item2 })</code>
-        <h2>As a <strong>function parameter with implied types</strong>:</h2><code><span class='name'>array</span>.<span class='func'>sorted</span>(<span class='func'>by:</span> { (item1, item2) -&gt; Bool <span class='return'>in return</span> item1 &lt; item2 })</code>
-        <h2>As a <strong>function parameter with implied return type</strong>:</h2><code><span class='name'>array</span>.<span class='func'>sorted</span>(<span class='func'>by:</span> { (item1, item2) <span class='return'>in return</span> item1 &lt; item2 })</code>
-        <h2>As the <strong>last function parameter</strong>:</h2><code><span class='name'>array</span>.<span class='func'>sorted</span> { (item1, item2) <span class='return'>in return</span> item1 &lt; item2 }</code>
-        <h2>As the last parameter, <strong>using shorthand argument names</strong>:</h2><code><span class='name'>array</span>.<span class='func'>sorted</span> { <span class='return'>return</span> $0 &lt; $1 }</code>
-        <h2>As the last parameter, <strong>with an implied return value</strong>:</h2><code><span class='name'>array</span>.<span class='func'>sorted</span> { $0 &lt; $1 }</code>
-        <h2>As the last parameter, <strong>as a reference to an existing function</strong>:</h2><code><span class='name'>array</span>.<span class='func'>sorted</span>(<span class='func'>by:</span> &lt;)</code>
-        <h2>As a function parameter <strong>with explicit capture semantics</strong>:</h2><code><span class='name'>array</span>.<span class='func'>sorted</span>(<span class='func'>by:</span> { [unowned self] (item1: <span class='func'>Int</span>, item2: <span class='func'>Int</span>) -&gt; Bool <span class='return'>in return</span> item1 &lt; item2 })</code>
-        <h2>As a function parameter <strong>with explicit capture semantics and inferred parameters / return type</strong>:</h2><code><span class='name'>array</span>.<span class='func'>sorted</span>(<span class='func'>by:</span> { [unowned self] <span class='return'>in return</span> $0 &lt; $1 })</code>
-    </div>
-    <div class='disclaimer'>
-        This site is not intended to be an exhaustive list of all possible uses of closures.<br>
+    <h2>Iterations with <strong>for</strong> statements and <strong>where</strong> clauses</h2>       
+    <code>for case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span> in <span class='expression'>rescuePups</span> where droolRating > 5 && weight > 15.0 {<br/>
+    <span class='comment'>...  // I'll take the chubby, soggy ones please ... </span><br/>
+    </code>
+</div>
         <br>
         <br>
-        Unable to access this site due to the profanity in the URL? <strong><a href="http://goshdarnclosuresyntax.com">http://goshdarnclosuresyntax.com</a></strong> is a more work-friendly mirror.
+        Unable to access this site due to the profanity in the URL? <strong><a href="http://goshdarnifcaseletsyntax.com">http://goshdarnifcaseletsyntax.com</a></strong> is a more work-friendly mirror.
     </div>
     <footer>
-        By <a href="http://twitter.com/zoejessica">Zoe Smith</a>, with apologies to <a href="http://zeveisenberg.com">Zev Eisenberg</a> and <a href="http://lazerwalker.com/">Mike Walker</a>, who has a very bad memory for this sort of thing.
+        By <a href="http://twitter.com/zoejessica">Zoe Smith</a>, with apologies to <a href="http://zeveisenberg.com">Zev Eisenberg</a>, and <a href="http://lazerwalker.com/">Mike Walker</a> who has a very bad memory for this sort of thing.
     </footer>
 </body>
 </html>
