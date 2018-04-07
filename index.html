@@ -165,11 +165,11 @@
     </div>
     <div>
         <h2>Add <strong>if</strong> and <strong>guard</strong> conditions using commas</h2>       
-        <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating > 4 {<br/>
+        <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating > 8 {<br/>
         <span class='comment'>...  // you're going to need a new couch ... </span><br/>
         </code>
            
-        <code>guard case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating > 10 {<br/>
+        <code>guard case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating < 10 else {<br/>
         <span class='comment'>...  // that dog is not coming in the house ... </span><br/>
         </code>
     </div>
@@ -179,9 +179,16 @@
     <span class='comment'>...  // I'll take the chubby, soggy ones please ... </span><br/>
     </code>
 </div>
-        <br>
+        <p>Other more in-depth articles:
+	        <li><a href='https://appventure.me/2015/08/20/swift-pattern-matching-in-detail/'>Swift Pattern Matching In Detail - Benedikt Terhechte</a></li>
+	        <li><a href='https://oleb.net/blog/2015/09/swift-pattern-matching/'>Pattern Matching In Swift - Ole Begemann</a></li>
+	        <li><a href='http://alisoftware.github.io/swift/pattern-matching/2016/05/16/pattern-matching-4/'>Pattern Matching - Crunchy Development</a></li> </p>
+	                <br>
         <br>
         Unable to access this site due to the profanity in the URL? <strong><a href="http://goshdarnifcaseletsyntax.com">http://goshdarnifcaseletsyntax.com</a></strong> is a more work-friendly mirror.
+        <br>
+        
+        
     </div>
     <footer>
         By <a href="http://twitter.com/zoejessica">Zoe Smith</a>, with apologies to <a href="http://zeveisenberg.com">Zev Eisenberg</a>, and <a href="http://lazerwalker.com/">Mike Walker</a> who has a very bad memory for this sort of thing.
