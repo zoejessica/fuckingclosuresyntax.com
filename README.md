@@ -1,6 +1,6 @@
-Fucking Closure Syntax
+Fucking If Case Let Syntax
 =================
 
 Because syntax is hard.
 
-http://fuckingclosuresyntax.com
+http://fuckingifcaseletsyntax.com
