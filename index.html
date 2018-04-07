@@ -4,7 +4,7 @@
     <title>How Do I Write If Case Let in Swift??</title>
     <style>
     body {
-      background-color: #16211B;
+      background-color: #30303A;
       color: #fff;
       font-family: Helvetica Neue, sans-serif;
       font-size: 20px;
@@ -13,7 +13,7 @@
     }
 
     strong {
-      color: #FCFF4B;
+      color: #B68DE0;
     }
 
     h1 {
@@ -27,15 +27,15 @@
     }
 
     .let {
-      color: #FCFF4B;
+      color: #B68DE0;
     }
 
     .expression {
-      color: #AC6FE2;
+      color: #F9DF4A;
     }
 
     .pattern {
-      color: #FF4365;
+      color: #1FDDBA;
     }
     
     .comment {
@@ -62,7 +62,7 @@
 
     .inline-code {
         font-family: Menlo, monaco, monospace;
-        color: #FCFF4B;
+        color: #B68DE0;
     }
 
     footer {
@@ -137,7 +137,7 @@
         <p class='disclaimer'><span class='inline-code'>case let</span> immediately precedes the <span class='pattern'>pattern to match</span> in both versions. But in <span class='inline-code'>if case let</span> the <span class='expression'>value</span> comes after the = operator:</p>
         <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span> = <span class='expression'>fido</span> {<br/>
         <span class='comment'>...  // tell fido he's a good boy ... </span><br/>
-        </code><p class='disclaimer'>is equal to</p><code>
+        </code><p class='disclaimer'>is equivalent to</p><code>
         switch <span class='expression'>fido</span> {<br/>
 
         case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span>:<br/>
