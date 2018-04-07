@@ -114,7 +114,7 @@
     <link href="favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
     <link href="favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
     <link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
-    <meta content="Closures" name="apple-mobile-web-app-title">
+    <meta content="Pattern matching syntax" name="apple-mobile-web-app-title">
     <base target="_top">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-9504319-6"></script>
@@ -134,10 +134,10 @@
     <h1>How Do I Write If Case Let in Swift?</h1>
     <div>
         <h2><strong>if case let</strong> is an abbreviated form of <strong>switch</strong></h2>
-        <p class='disclaimer'><span class='inline-code'>case let</span> immediately precedes the <span class='pattern'>pattern to match</span> in both versions. But in <span class='inline-code'>if case let</span> the <span class='expression'>value</span> comes after the = operator:</p>
+        <p class='disclaimer'><span class='inline-code'>case let</span> immediately precedes the <span class='pattern'>candidate pattern</span> in both versions. But in <span class='inline-code'>if case let</span> the <span class='expression'>value</span> comes after the = operator:</p>
         <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span> = <span class='expression'>fido</span> {<br/>
         <span class='comment'>...  // tell fido he's a good boy ... </span><br/>
-        </code><p class='disclaimer'>is equivalent to</p><code>
+        </code><p class='disclaimer'>is equivalent to: </p><code>
         switch <span class='expression'>fido</span> {<br/>
 
         case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span>:<br/>
@@ -191,7 +191,7 @@
         
     </div>
     <footer>
-        By <a href="http://twitter.com/zoejessica">Zoe Smith</a>, with apologies to <a href="http://zeveisenberg.com">Zev Eisenberg</a>, and <a href="http://lazerwalker.com/">Mike Walker</a> who has a very bad memory for this sort of thing.
+        By <a href="http://twitter.com/zoejessica">Zoe Smith</a>, with thanks to <a href="http://zeveisenberg.com">Zev Eisenberg</a>, and apologies to <a href="http://lazerwalker.com/">Mike Walker</a> who has a very bad memory for this sort of thing.
     </footer>
 </body>
 </html>
