@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>How do I use if case let syntax in Swift?</title>
+    <title>How Do I Write If Case Let in Swift??</title>
     <style>
     body {
       background-color: #292a35;
@@ -30,19 +30,11 @@
       color: #ba246c;
     }
 
-    .green {
-      color: #95cc6b;
-    }
-
-    .func {
+    .expression {
       color: #2dafc9;
     }
 
-    .parameter-types, .parameters, .expression {
-      color: #2dafc9;
-    }
-
-    .closure-type, .pattern {
+    .pattern {
       color: #95cc6b;
     }
     
@@ -139,10 +131,10 @@
     #forkongithub a{background:#AA3333;color:#fff;text-decoration:none;font-family:Helvetica Neue,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#c11;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.3);}}
     </style><span id="forkongithub"><a href="https://github.com/zoejessica/fuckingifcaseletsyntax.com">Fork me on GitHub</a></span><br>
     <br>
-    <h1>How Do I Use if case let Syntax in Swift?</h1>
+    <h1>How Do I Write If Case Let in Swift?</h1>
     <div>
-        <h2><strong>if case let</strong> is just an abbreviated form of <strong>switch</strong>:</h2>
-        <p class='disclaimer'>The <span class='pattern'>pattern to match</span> against goes in exactly the same place, after the <span class='inline-code'>case let</span> keywords. But the order looks reversed, as the <span class='expression'>expression</span> has moved right, after the <span class='inline-code'>=</span> operator.</p>
+        <h2><strong>if case let</strong> is an abbreviated form of <strong>switch</strong></h2>
+        <p class='disclaimer'><span class='inline-code'>case let</span> immediately precedes the <span class='pattern'>pattern to match</span> in both versions. But in <span class='inline-code'>if case let</span> the <span class='expression'>expression</span> comes after the = operator:</p>
         <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span> = <span class='expression'>fido</span> {<br/>
         <span class='comment'>...  // tell fido he's a good boy ... </span><br/>
         </code><p class='disclaimer'>is equal to</p><code>
@@ -154,13 +146,17 @@
     </div>
         <div>
         <h2><strong>let</strong> binds associated values</h2>
-        <p class='disclaimer'>Putting <span class='inline-code'>let</span> after case means you can omit it for all subsequent associated value bindings. Or you can write it before each value:</p>
+        <p class='disclaimer'><span class='inline-code'>case let </span>is a shortcut so all subsequent associated values can be bound just by providing a variable name. Alternatively,  write <span class='inline-code'>let</span> before each value:</p>
         <code>if case <span class='pattern'>Puppy.mastiff(<span class='let'>let</span> droolRating, <span class='let'>let</span> weight)</span> = <span class='expression'>fido</span> {<br/>
         <span class='comment'>...  // does that pup need an extra treat? ... </span>
         </code>
         <p class='disclaimer'>Bind a tuple with all the values at once:</p>
-         <code>if case let <span class='pattern'>Puppy.mastiff(characteristics)</span> = <span class='expression'>fido</span> {<br/>
-        <span class='comment'>...  // let's check this one out ... </span><br/>
+         <code>if case <span class='let'>let</span> <span class='pattern'>Puppy.mastiff(characteristics)</span> = <span class='expression'>fido</span> {<br/>
+        <span class='comment'>...  // this one's a cutie pie ... </span><br/>
+        </code>
+        <p class='disclaimer'>Remember the syntactic sugar to match non-nil optionals:</p>
+         <code>if case <span class='let'>let</class> <span class='pattern'>Puppy.mastiff(droolFactor, weight)?</span> = <span class='expression'>potentialPup</span> {<br/>
+        <span class='comment'>...  // oh thank goodness, a puppy ... </span><br/>
         </code>
         <p class='disclaimer'>Omit <span class='let'>let</span> entirely if you don't need the associated values:</p>
          <code>if case <span class='pattern'>Puppy.mastiff</span> = <span class='expression'>fido</span> {<br/>
@@ -168,19 +164,17 @@
         </code>
     </div>
     <div>
-        <h2>Add <strong>where</strong> clauses using commas</h2>       
+        <h2>Add <strong>if</strong> and <strong>guard</strong> conditions using commas</h2>       
         <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating > 4 {<br/>
         <span class='comment'>...  // you're going to need a new couch ... </span><br/>
         </code>
-    </div>
-    <div>
-        <h2>Add <strong>where</strong> clauses in <strong>guard</strong> statements</h2>       
+           
         <code>guard case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating > 10 {<br/>
         <span class='comment'>...  // that dog is not coming in the house ... </span><br/>
         </code>
     </div>
     <div>
-    <h2>Iterations with <strong>for</strong> statements and <strong>where</strong> clauses</h2>       
+    <h2>Iterate using <strong>for</strong>, <strong>where</strong> and logical operators</h2>       
     <code>for case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span> in <span class='expression'>rescuePups</span> where droolRating > 5 && weight > 15.0 {<br/>
     <span class='comment'>...  // I'll take the chubby, soggy ones please ... </span><br/>
     </code>
