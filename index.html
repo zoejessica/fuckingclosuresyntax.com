@@ -179,6 +179,15 @@
     <span class='comment'>...  // I'll take the chubby, soggy ones please</span><br/>
     </code>
 </div>
+
+    <div>
+      <h2>Bind non-optional derived values in chained expressions</h2>
+      <code>
+        if let rescueCenter = <span class='expression'>nearest()</span>, case let <span class='pattern'>puppies</span> = <span class='expression'>rescueCenter.puppies</span>, puppies.count < 10 {<br/>
+        <span class='comment'>... // better hurry or might not get enough</span><br/>
+      </code>
+    </div>
+
         <p>Other more in-depth articles:
 	        <li><a href='https://appventure.me/2015/08/20/swift-pattern-matching-in-detail/'>Swift Pattern Matching In Detail - Benedikt Terhechte</a></li>
 	        <li><a href='https://oleb.net/blog/2015/09/swift-pattern-matching/'>Pattern Matching In Swift - Ole Begemann</a></li>
