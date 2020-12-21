@@ -3,9 +3,31 @@
 <head>
     <title>How Do I Write If Case Let in Swift?</title>
     <style>
+    :root {
+      --background-color: white;
+      --text-color: black;
+      --inline-code-text-color: green;
+      --strong-text-color: #880bad;
+      --let-text-color: #137d18;
+      --expression-text-color:#bf3310;
+      --pattern-text-color: #008a53;
+      --comment-text-color: #5d5959;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background-color: #30303A;
+        --text-color: #fff;
+        --strong-text-color: #B68DE0;
+        --let-text-color: #B68DE0;
+        --expression-text-color:#F9DF4A;
+        --pattern-text-color: #1FDDBA;
+        --comment-text-color: #959292;
+      }
+    }
+
     body {
-      background-color: #30303A;
-      color: #fff;
+      background-color: var(--background-color);
+      color: var(--text-color);
       font-family: Helvetica Neue, sans-serif;
       font-size: 20px;
       padding: 40px;
@@ -13,7 +35,7 @@
     }
 
     strong {
-      color: #B68DE0;
+      color: var(--strong-text-color);
     }
 
     h1 {
@@ -27,20 +49,20 @@
     }
 
     .let {
-      color: #B68DE0;
+      color: var(--let-text-color);
     }
 
     .expression {
-      color: #F9DF4A;
+      color: var(--expression-text-color);
     }
 
     .pattern {
-      color: #1FDDBA;
+      color: var(--pattern-text-color);
     }
-    
+
     .comment {
-	  color: #959292;
-    }
+	    color: var(--comment-text-color);
+	  }
 
     .disclaimer {
       line-height: 2em;
@@ -62,7 +84,7 @@
 
     .inline-code {
         font-family: Menlo, monaco, monospace;
-        color: #B68DE0;
+        color: var(--inline-code-text-color);
     }
 
     footer {
@@ -73,14 +95,14 @@
     }
 
     a {
-      color: #B68DE0;
+      color: var(--let-text-color);
       text-decoration: none;
     }
 
     </style>
     <style media='print'>
     body {
-      background-color: #FFFFFF;
+      background-color: #fff;
       font-size: 16px;
       padding: 20px;
     }
@@ -164,17 +186,17 @@
         </code>
     </div>
     <div>
-        <h2>Add conditions to <strong>if</strong> and <strong>guard</strong> using commas</h2>       
+        <h2>Add conditions to <strong>if</strong> and <strong>guard</strong> using commas</h2>
         <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating > 8 {<br/>
         <span class='comment'>...  // you're going to need a new couch</span><br/>
         </code>
-           
+
         <code>guard case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating < 10 else {<br/>
         <span class='comment'>...  // that dog is not coming in the house</span><br/>
         </code>
     </div>
     <div>
-    <h2>Iterate using <strong>for</strong>, <strong>where</strong> and logical operators</h2>       
+    <h2>Iterate using <strong>for</strong>, <strong>where</strong> and logical operators</h2>
     <code>for case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span> in <span class='expression'>rescuePups</span> where droolRating > 5 && weight > 15.0 {<br/>
     <span class='comment'>...  // I'll take the chubby, soggy ones please</span><br/>
     </code>
@@ -192,14 +214,14 @@
 	        <li><a href='https://appventure.me/2015/08/20/swift-pattern-matching-in-detail/'>Swift Pattern Matching In Detail - Benedikt Terhechte</a></li>
 	        <li><a href='https://oleb.net/blog/2015/09/swift-pattern-matching/'>Pattern Matching In Swift - Ole Begemann</a></li>
 	        <li><a href='http://alisoftware.github.io/swift/pattern-matching/2016/05/16/pattern-matching-4/'>Pattern Matching - Crunchy Development</a></li>
-		<li><a href='https://www.bignerdranch.com/blog/pro-pattern-matching-in-swift/'>Pro Pattern-Matching in Swift - Nick Teissler, Big Nerd Ranch</a></li>              
+		<li><a href='https://www.bignerdranch.com/blog/pro-pattern-matching-in-swift/'>Pro Pattern-Matching in Swift - Nick Teissler, Big Nerd Ranch</a></li>
 		<li><a href='https://www.objc.io/blog/2018/09/04/switching-with-associated-values/'</a>Using the power of switching with associated values to write elegant, logical, meaningful code - objc.io</a></li> </p>
 	<br>
         <br>
         Unable to access this site due to the profanity in the URL? <strong><a href="http://goshdarnifcaseletsyntax.com">http://goshdarnifcaseletsyntax.com</a></strong> is a more work-friendly mirror.
         <br>
-        
-        
+
+
     </div>
     <footer>
         By <a href="http://twitter.com/zoejessica">Zoe Smith</a>, with many thanks to <a href="http://zeveisenberg.com">Zev Eisenberg</a> and <a href="http://lazerwalker.com/">Em Lazer-Walker</a>.
