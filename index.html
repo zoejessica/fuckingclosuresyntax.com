@@ -3,9 +3,35 @@
 <head>
     <title>How Do I Write If Case Let in Swift?</title>
     <style>
+    
+    :root {
+      --background-color: #e9dcdc;
+      --text-color: #332443;
+      --inline-code-text-color: #714aa2;
+      --strong-text-color: #714aa2;
+      --let-text-color: #714aa2;
+      --expression-text-color:#2a524d;
+      --pattern-text-color: #2a524d;
+      --comment-text-color: #5d5959;
+      --code-block-color: #2a524d;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background-color: #332443;
+        --text-color: #fff;
+        --inline-code-text-color: #fd5b58;
+        --strong-text-color: #fd5b58;
+        --let-text-color: #fd5b58;
+        --expression-text-color: #ebdddb;
+        --pattern-text-color: #ebdddb;
+        --comment-text-color: #9c8083;
+        --code-block-color: #ebdddb;
+      }
+    }
+
     body {
-      background-color: #30303A;
-      color: #fff;
+      background-color: var(--background-color);
+      color: var(--text-color);
       font-family: Helvetica Neue, sans-serif;
       font-size: 20px;
       padding: 40px;
@@ -13,7 +39,7 @@
     }
 
     strong {
-      color: #B68DE0;
+      color: var(--strong-text-color);
     }
 
     h1 {
@@ -27,20 +53,20 @@
     }
 
     .let {
-      color: #B68DE0;
+      color: var(--let-text-color);
     }
 
     .expression {
-      color: #F9DF4A;
+      color: var(--expression-text-color);
     }
 
     .pattern {
-      color: #1FDDBA;
+      color: var(--pattern-text-color);
     }
-    
+
     .comment {
-	  color: #959292;
-    }
+	    color: var(--comment-text-color);
+	  }
 
     .disclaimer {
       line-height: 2em;
@@ -58,11 +84,12 @@
       margin-bottom: 3em;
       margin-left: 40px;
       margin-top: 1.5em;
+      color: var(--code-block-color);
     }
 
     .inline-code {
         font-family: Menlo, monaco, monospace;
-        color: #B68DE0;
+        color: var(--inline-code-text-color);
     }
 
     footer {
@@ -73,14 +100,14 @@
     }
 
     a {
-      color: #B68DE0;
+      color: var(--let-text-color);
       text-decoration: none;
     }
 
     </style>
     <style media='print'>
     body {
-      background-color: #FFFFFF;
+      background-color: #fff;
       font-size: 16px;
       padding: 20px;
     }
@@ -127,64 +154,72 @@
     </script>
 </head>
 <body>
-    <style>
-    #forkongithub a{background:#AA3333;color:#fff;text-decoration:none;font-family:Helvetica Neue,sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#c11;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;z-index:9999;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.3);}}
-    </style><span id="forkongithub"><a href="https://github.com/zoejessica/fuckingifcaseletsyntax.com">Fork me on GitHub</a></span><br>
-    <br>
-    <h1>How Do I Write If Case Let in Swift?</h1>
+    <h1>How <i>Do</i> I Write If Case Let in Swift?</h1>
     <div>
         <h2><strong>if case let</strong> is an abbreviated form of <strong>switch</strong></h2>
-        <p class='disclaimer'><span class='inline-code'>case let</span> immediately precedes the <span class='pattern'>candidate pattern</span> in both versions. However, when using <span class='inline-code'>if case let</span> the <span class='expression'>value</span> comes after the = operator:</p>
-        <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span> = <span class='expression'>fido</span> {<br/>
-        <span class='comment'>...  // tell fido he's a good boy</span><br/>
+        <p class='disclaimer'><span class='inline-code'>case let</span> immediately precedes the <span class='pattern'>candidate pattern</span> in both versions. Confusingly though, when using <span class='inline-code'>if case let</span>, the <span class='expression'>value</span> comes <i>after</i> the = operator. So</p>
+        <code><span class='let'>if case let </span><span class='pattern'>Puppy.mastiff(droolRating, weight)</span> = <span class='expression'>fido</span> {<br/>
         </code><p class='disclaimer'>is equivalent to: </p><code>
         switch <span class='expression'>fido</span> {<br/>
 
-        case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span>:<br/>
-        <span class='comment'>... // tell fido he's a good boy</span><br/>
+        <span class='let'>case let </span><span class='pattern'>Puppy.mastiff(droolRating, weight)</span>:<br/>
+        <br/>
+        <span class='comment'>// tell fido he's a good doggo</span><br/>
         </code>
     </div>
         <div>
         <h2><strong>let</strong> binds associated values</h2>
-        <p class='disclaimer'><span class='inline-code'>case let </span>is a shortcut so all subsequent associated values can be bound just by providing variable names. Alternatively write <span class='inline-code'>let</span> as usual, before each name:</p>
-        <code>if case <span class='pattern'>Puppy.mastiff(<span class='let'>let</span> droolRating, <span class='let'>let</span> weight)</span> = <span class='expression'>fido</span> {<br/>
-        <span class='comment'>...  // does that pup need an extra treat?</span>
+        <p class='disclaimer'><span class='inline-code'>case let </span>is a shortcut that lets you bind all subsequent associated values with just variable names. But you can write each <span class='inline-code'>let</span>  individually, just before the variable name:</p>
+        <code><span class='let'>if case </span><span class='pattern'>Puppy.mastiff(<span class='let'>let</span> droolRating, <span class='let'>let</span> weight)</span> = <span class='expression'>fido</span> {<br/>
+        <br/>
+        <span class='comment'>// does that pup need an extra treat?</span>
         </code>
-        <p class='disclaimer'>Bind a tuple with all the values at once:</p>
-         <code>if case <span class='let'>let</span> <span class='pattern'>Puppy.mastiff(characteristics)</span> = <span class='expression'>fido</span> {<br/>
-        <span class='comment'>...  // how cute is this doggie, exactly?</span><br/>
+        <p class='disclaimer'>Provide a single name to create a tuple of all associated values at once:</p>
+         <code><span class='let'>if case let</span> <span class='pattern'>Puppy.mastiff(characteristics)</span> = <span class='expression'>fido</span> {<br/>
+         <br/>
+        <span class='comment'>// how cute is this doggo, exactly?</span><br/>
         </code>
-        <p class='disclaimer'>Remember the syntactic sugar to match non-nil optionals:</p>
-         <code>if case <span class='let'>let</class> <span class='pattern'>Puppy.mastiff(droolFactor, weight)?</span> = <span class='expression'>potentialPup</span> {<br/>
-        <span class='comment'>...  // oh thank goodness, a puppy</span><br/>
+        <p class='disclaimer'>The <span class='pattern'>?</span> is syntactic sugar to only match non-nil optionals:</p>
+         <code><span class='let'>if case let</class> <span class='pattern'>Puppy.mastiff(droolFactor, weight)?</span> = <span class='expression'>potentialPup</span> {<br/>
+         <br/>
+        <span class='comment'>// oh thank goodness, a puppy</span><br/>
         </code>
         <p class='disclaimer'>Omit <span class='let'>let</span> entirely if you don't need the associated values:</p>
-         <code>if case <span class='pattern'>Puppy.mastiff</span> = <span class='expression'>fido</span> {<br/>
-        <span class='comment'>...  // just hand me the pupster</span><br/>
+         <code><span class='let'>if case </span><span class='pattern'>Puppy.mastiff</span> = <span class='expression'>fido</span> {<br/>
+         <br/>
+        <span class='comment'>// just hand me the pupster</span><br/>
         </code>
     </div>
     <div>
-        <h2>Add conditions to <strong>if</strong> and <strong>guard</strong> using commas</h2>       
-        <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating > 8 {<br/>
-        <span class='comment'>...  // you're going to need a new couch</span><br/>
+        <h2>Add conditions to <strong>if</strong> and <strong>guard</strong> using commas</h2>
+        <code><span class='let'>if case let</span> <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating > 8 {<br/>
+        <br/>
+        <span class='comment'>// you're going to need a new couch</span><br/>
         </code>
-           
-        <code>guard case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating < 10 else {<br/>
-        <span class='comment'>...  // that dog is not coming in the house</span><br/>
+
+        <code><span class='let'>guard case let </span><span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating < 10 else {<br/>
+        <br/>
+        <span class='comment'>// that dog is not coming in the house</span><br/>
         </code>
     </div>
     <div>
-    <h2>Iterate using <strong>for</strong>, <strong>where</strong> and logical operators</h2>       
-    <code>for case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span> in <span class='expression'>rescuePups</span> where droolRating > 5 && weight > 15.0 {<br/>
-    <span class='comment'>...  // I'll take the chubby, soggy ones please</span><br/>
-    </code>
+    <h2>Iterate using <strong>for</strong>, <strong>where</strong> and logical operators</h2>
+    <code><span class='let'>for case let </span><span class='pattern'>Puppy.mastiff(droolRating, weight)</span> in <span class='expression'>rescuePups</span> <span class='let'>where</span> droolRating > 5 && weight > 15.0 {<br/>
+    <br/>
+    <span class='comment'>// I'll take the chubby, soggy ones please</span><br/></code>    
+    <p class='disclaimer'>Use <span class='pattern'>?</span> to iterate over just non-optional values:</p>
+    <code><span class='let'>for case let </span><span class='pattern'>SocialMedia.instagram(username)?</span> in <span class='expression'>pups.map(\.socialMedia)</span> {<br/>
+    <br/>
+    <span class='comment'>// brb instafollowing</span><br/></code> 
 </div>
 
     <div>
       <h2>Bind non-optional derived values in chained expressions</h2>
+      <p class='disclaimer'>Really helpful if you need one non-optional assignment amidst a bunch of optional ones:</p>
       <code>
-        if let rescueCenter = <span class='expression'>nearest()</span>, case let <span class='pattern'>puppies</span> = <span class='expression'>rescueCenter.puppies</span>, puppies.count < 10 {<br/>
-        <span class='comment'>... // better hurry or might not get enough</span><br/>
+        if let rescueCenter = <span class='expression'>nearest()</span>, <span class='let'>case let</span> <span class='pattern'>puppies</span> = <span class='expression'>rescueCenter.puppies</span>, puppies.count < 10 {<br/>
+        <br/>
+        <span class='comment'>// better hurry or might not get enough</span><br/>
       </code>
     </div>
 
@@ -192,14 +227,14 @@
 	        <li><a href='https://appventure.me/2015/08/20/swift-pattern-matching-in-detail/'>Swift Pattern Matching In Detail - Benedikt Terhechte</a></li>
 	        <li><a href='https://oleb.net/blog/2015/09/swift-pattern-matching/'>Pattern Matching In Swift - Ole Begemann</a></li>
 	        <li><a href='http://alisoftware.github.io/swift/pattern-matching/2016/05/16/pattern-matching-4/'>Pattern Matching - Crunchy Development</a></li>
-		<li><a href='https://www.bignerdranch.com/blog/pro-pattern-matching-in-swift/'>Pro Pattern-Matching in Swift - Nick Teissler, Big Nerd Ranch</a></li>              
+		<li><a href='https://www.bignerdranch.com/blog/pro-pattern-matching-in-swift/'>Pro Pattern-Matching in Swift - Nick Teissler, Big Nerd Ranch</a></li>
 		<li><a href='https://www.objc.io/blog/2018/09/04/switching-with-associated-values/'</a>Using the power of switching with associated values to write elegant, logical, meaningful code - objc.io</a></li> </p>
 	<br>
         <br>
         Unable to access this site due to the profanity in the URL? <strong><a href="http://goshdarnifcaseletsyntax.com">http://goshdarnifcaseletsyntax.com</a></strong> is a more work-friendly mirror.
         <br>
-        
-        
+
+
     </div>
     <footer>
         By <a href="http://twitter.com/zoejessica">Zoe Smith</a>, with many thanks to <a href="http://zeveisenberg.com">Zev Eisenberg</a> and <a href="http://lazerwalker.com/">Em Lazer-Walker</a>.
