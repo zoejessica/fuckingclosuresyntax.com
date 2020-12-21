@@ -3,25 +3,29 @@
 <head>
     <title>How Do I Write If Case Let in Swift?</title>
     <style>
+    
     :root {
-      --background-color: white;
-      --text-color: black;
-      --inline-code-text-color: green;
-      --strong-text-color: #880bad;
-      --let-text-color: #137d18;
-      --expression-text-color:#bf3310;
-      --pattern-text-color: #008a53;
+      --background-color: #e9dcdc;
+      --text-color: #332443;
+      --inline-code-text-color: #714aa2;
+      --strong-text-color: #714aa2;
+      --let-text-color: #714aa2;
+      --expression-text-color:#2a524d;
+      --pattern-text-color: #2a524d;
       --comment-text-color: #5d5959;
+      --code-block-color: #2a524d;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --background-color: #30303A;
+        --background-color: #332443;
         --text-color: #fff;
-        --strong-text-color: #B68DE0;
-        --let-text-color: #B68DE0;
-        --expression-text-color:#F9DF4A;
-        --pattern-text-color: #1FDDBA;
-        --comment-text-color: #959292;
+        --inline-code-text-color: #fd5b58;
+        --strong-text-color: #fd5b58;
+        --let-text-color: #fd5b58;
+        --expression-text-color: #ebdddb;
+        --pattern-text-color: #ebdddb;
+        --comment-text-color: #9c8083;
+        --code-block-color: #ebdddb;
       }
     }
 
@@ -80,6 +84,7 @@
       margin-bottom: 3em;
       margin-left: 40px;
       margin-top: 1.5em;
+      color: var(--code-block-color);
     }
 
     .inline-code {
@@ -149,15 +154,15 @@
     </script>
 </head>
 <body>
-    <h1>How Do I Write If Case Let in Swift?</h1>
+    <h1>How <i>Do</i> I Write If Case Let in Swift?</h1>
     <div>
         <h2><strong>if case let</strong> is an abbreviated form of <strong>switch</strong></h2>
         <p class='disclaimer'><span class='inline-code'>case let</span> immediately precedes the <span class='pattern'>candidate pattern</span> in both versions. Confusingly though, when using <span class='inline-code'>if case let</span>, the <span class='expression'>value</span> comes <i>after</i> the = operator. So</p>
-        <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span> = <span class='expression'>fido</span> {<br/>
+        <code><span class='let'>if case let </span><span class='pattern'>Puppy.mastiff(droolRating, weight)</span> = <span class='expression'>fido</span> {<br/>
         </code><p class='disclaimer'>is equivalent to: </p><code>
         switch <span class='expression'>fido</span> {<br/>
 
-        case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span>:<br/>
+        <span class='let'>case let </span><span class='pattern'>Puppy.mastiff(droolRating, weight)</span>:<br/>
         <br/>
         <span class='comment'>// tell fido he's a good doggo</span><br/>
         </code>
@@ -165,45 +170,45 @@
         <div>
         <h2><strong>let</strong> binds associated values</h2>
         <p class='disclaimer'><span class='inline-code'>case let </span>is a shortcut that lets you bind all subsequent associated values with just variable names. But you can write each <span class='inline-code'>let</span>  individually, just before the variable name:</p>
-        <code>if case <span class='pattern'>Puppy.mastiff(<span class='let'>let</span> droolRating, <span class='let'>let</span> weight)</span> = <span class='expression'>fido</span> {<br/>
+        <code><span class='let'>if case </span><span class='pattern'>Puppy.mastiff(<span class='let'>let</span> droolRating, <span class='let'>let</span> weight)</span> = <span class='expression'>fido</span> {<br/>
         <br/>
         <span class='comment'>// does that pup need an extra treat?</span>
         </code>
         <p class='disclaimer'>Provide a single name to create a tuple of all associated values at once:</p>
-         <code>if case <span class='let'>let</span> <span class='pattern'>Puppy.mastiff(characteristics)</span> = <span class='expression'>fido</span> {<br/>
+         <code><span class='let'>if case let</span> <span class='pattern'>Puppy.mastiff(characteristics)</span> = <span class='expression'>fido</span> {<br/>
          <br/>
         <span class='comment'>// how cute is this doggo, exactly?</span><br/>
         </code>
         <p class='disclaimer'>The <span class='pattern'>?</span> is syntactic sugar to only match non-nil optionals:</p>
-         <code>if case <span class='let'>let</class> <span class='pattern'>Puppy.mastiff(droolFactor, weight)?</span> = <span class='expression'>potentialPup</span> {<br/>
+         <code><span class='let'>if case let</class> <span class='pattern'>Puppy.mastiff(droolFactor, weight)?</span> = <span class='expression'>potentialPup</span> {<br/>
          <br/>
         <span class='comment'>// oh thank goodness, a puppy</span><br/>
         </code>
         <p class='disclaimer'>Omit <span class='let'>let</span> entirely if you don't need the associated values:</p>
-         <code>if case <span class='pattern'>Puppy.mastiff</span> = <span class='expression'>fido</span> {<br/>
+         <code><span class='let'>if case </span><span class='pattern'>Puppy.mastiff</span> = <span class='expression'>fido</span> {<br/>
          <br/>
         <span class='comment'>// just hand me the pupster</span><br/>
         </code>
     </div>
     <div>
         <h2>Add conditions to <strong>if</strong> and <strong>guard</strong> using commas</h2>
-        <code>if case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating > 8 {<br/>
+        <code><span class='let'>if case let</span> <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating > 8 {<br/>
         <br/>
         <span class='comment'>// you're going to need a new couch</span><br/>
         </code>
 
-        <code>guard case let <span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating < 10 else {<br/>
+        <code><span class='let'>guard case let </span><span class='pattern'>Puppy.mastiff(droolRating, _)</span> = <span class='expression'>fido</span>, droolRating < 10 else {<br/>
         <br/>
         <span class='comment'>// that dog is not coming in the house</span><br/>
         </code>
     </div>
     <div>
     <h2>Iterate using <strong>for</strong>, <strong>where</strong> and logical operators</h2>
-    <code>for case let <span class='pattern'>Puppy.mastiff(droolRating, weight)</span> in <span class='expression'>rescuePups</span> where droolRating > 5 && weight > 15.0 {<br/>
+    <code><span class='let'>for case let </span><span class='pattern'>Puppy.mastiff(droolRating, weight)</span> in <span class='expression'>rescuePups</span> <span class='let'>where</span> droolRating > 5 && weight > 15.0 {<br/>
     <br/>
     <span class='comment'>// I'll take the chubby, soggy ones please</span><br/></code>    
     <p class='disclaimer'>Use <span class='pattern'>?</span> to iterate over just non-optional values:</p>
-    <code>for case let <span class='pattern'>SocialMedia.instagram(username)?</span> in <span class='expression'>pups.map(\.socialMedia)</span> {<br/>
+    <code><span class='let'>for case let </span><span class='pattern'>SocialMedia.instagram(username)?</span> in <span class='expression'>pups.map(\.socialMedia)</span> {<br/>
     <br/>
     <span class='comment'>// brb instafollowing</span><br/></code> 
 </div>
@@ -212,7 +217,7 @@
       <h2>Bind non-optional derived values in chained expressions</h2>
       <p class='disclaimer'>Really helpful if you need one non-optional assignment amidst a bunch of optional ones:</p>
       <code>
-        if let rescueCenter = <span class='expression'>nearest()</span>, case let <span class='pattern'>puppies</span> = <span class='expression'>rescueCenter.puppies</span>, puppies.count < 10 {<br/>
+        if let rescueCenter = <span class='expression'>nearest()</span>, <span class='let'>case let</span> <span class='pattern'>puppies</span> = <span class='expression'>rescueCenter.puppies</span>, puppies.count < 10 {<br/>
         <br/>
         <span class='comment'>// better hurry or might not get enough</span><br/>
       </code>
