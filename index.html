@@ -65,8 +65,8 @@
     }
 
     .comment {
-	    color: var(--comment-text-color);
-	  }
+        color: var(--comment-text-color);
+      }
 
     .disclaimer {
       line-height: 2em;
@@ -179,8 +179,8 @@
          <br/>
         <span class='comment'>// how cute is this doggo, exactly?</span><br/>
         </code>
-        <p class='disclaimer'>The <span class='pattern'>?</span> is syntactic sugar to only match non-nil optionals:</p>
-         <code><span class='let'>if case let</class> <span class='pattern'>Puppy.mastiff(droolFactor, weight)?</span> = <span class='expression'>potentialPup</span> {<br/>
+        <p class='disclaimer'>The <span class='let'>?</span> is syntactic sugar to only match non-nil optionals:</p>
+         <code><span class='let'>if case let</span> <span class='pattern'>Puppy.mastiff(droolFactor, weight)</span><span class = 'let'> ?</span> = <span class='expression'>potentialPup</span> {<br/>
          <br/>
         <span class='comment'>// oh thank goodness, a puppy</span><br/>
         </code>
@@ -207,10 +207,10 @@
     <code><span class='let'>for case let </span><span class='pattern'>Puppy.mastiff(droolRating, weight)</span> in <span class='expression'>rescuePups</span> <span class='let'>where</span> droolRating > 5 && weight > 15.0 {<br/>
     <br/>
     <span class='comment'>// I'll take the chubby, soggy ones please</span><br/></code>    
-    <p class='disclaimer'>Use <span class='pattern'>?</span> to iterate over just non-optional values:</p>
-    <code><span class='let'>for case let </span><span class='pattern'>SocialMedia.instagram(username)?</span> in <span class='expression'>pups.map(\.socialMedia)</span> {<br/>
+    <p class='disclaimer'>Use <span class='let'>?</span> to iterate over just non-optional values, even when doubly nested in associated values:</p>
+    <code><span class='let'>for case let </span><span class='pattern'>SocialMedia.instagram(linkInBio</span><span class='let'>?</span>)<span class = 'let'>?</span> in <span class='expression'>pups.map(\.socialMedia)</span> {<br/>
     <br/>
-    <span class='comment'>// brb instafollowing</span><br/></code> 
+    <span class='comment'>// all the links please</span><br/></code> 
 </div>
 
     <div>
